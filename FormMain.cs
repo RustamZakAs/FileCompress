@@ -45,11 +45,9 @@ namespace FileCompress
             this.pbFiles.Maximum = files?.Count ?? 0;
             foreach (string file in files ?? new List<string>())
             {
-                if (this.pbFiles.Value < this.pbFiles.Maximum)
-                    this.pbFiles.Value++;
                 string inputPdfPath = file;
                 string folderPath = Path.GetDirectoryName(file);
-                string newFolderName = "New";
+                string newFolderName = "Compressed";
                 string newFolderPath = folderPath;
                 if (!this.cbInOldFolder.Checked)
                 {
@@ -64,17 +62,39 @@ namespace FileCompress
                 switch (Path.GetExtension(fileName).ToLower())
                 {
                     case ".pdf":
-                        PdfCompressionService pdfCompressionService = new PdfCompressionService();
-                        //pdfCompressionService.CompressPdf(inputPdfPath, outputPdfPath);
-                        pdfCompressionService.CompressImagesInPdf(inputPdfPath, outputPdfPath);
+                        {
+                            PdfCompressionService pdfCompressionService = new PdfCompressionService();
+                            pdfCompressionService.CompressPdf(inputPdfPath, outputPdfPath);
+                        }
                         break;
+                    //case ".jpg":
+                    //case ".jpeg":
+                    //    {
+                    //        ImageCompressionService imageCompressionService = new ImageCompressionService();
+                    //        imageCompressionService.CompressImage(inputPdfPath, outputPdfPath, (int)this.nudQuality.Value); // 80% качество (оптимально)
+                    //    }
+                    //    break;
+                    //case ".png":
+                    //    {
+                    //        PngCompressionService pngCompressionService = new PngCompressionService();
+                    //        pngCompressionService.CompressPng(inputPdfPath, outputPdfPath);
+                    //    }
+                    //    break;
                     case ".jpg":
-                        ImageCompressionService imageCompressionService = new ImageCompressionService();
-                        imageCompressionService.CompressImage(inputPdfPath, outputPdfPath, 80); // 80% качество (оптимально)
+                    case ".jpeg":
+                    case ".png":
+                    case ".tiff":
+                    case ".gif":
+                        {
+                            PngCompressionService pngCompressionService = new PngCompressionService();
+                            pngCompressionService.ResizeAndCompressImage(inputPdfPath, outputPdfPath, (int)this.nudQuality.Value, 1920, 1080);
+                        }
                         break;
                     default:
                         break;
                 }
+                if (this.pbFiles.Value < this.pbFiles.Maximum)
+                    this.pbFiles.Value++;
             }
             this.pbFiles.Value = 0;
         }

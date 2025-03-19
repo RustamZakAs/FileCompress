@@ -34,6 +34,8 @@
             pbFiles = new System.Windows.Forms.ProgressBar();
             tbExtensions = new System.Windows.Forms.TextBox();
             cbInOldFolder = new System.Windows.Forms.CheckBox();
+            nudQuality = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)nudQuality).BeginInit();
             SuspendLayout();
             // 
             // tbFolder
@@ -89,11 +91,22 @@
             cbInOldFolder.Text = "In old folder";
             cbInOldFolder.UseVisualStyleBackColor = true;
             // 
+            // nudQuality
+            // 
+            nudQuality.Increment = new decimal(new int[] { 5, 0, 0, 0 });
+            nudQuality.Location = new System.Drawing.Point(335, 75);
+            nudQuality.Minimum = new decimal(new int[] { 50, 0, 0, 0 });
+            nudQuality.Name = "nudQuality";
+            nudQuality.Size = new System.Drawing.Size(64, 27);
+            nudQuality.TabIndex = 10;
+            nudQuality.Value = new decimal(new int[] { 90, 0, 0, 0 });
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(543, 129);
+            Controls.Add(nudQuality);
             Controls.Add(cbInOldFolder);
             Controls.Add(tbExtensions);
             Controls.Add(pbFiles);
@@ -104,6 +117,7 @@
             Name = "FormMain";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "FormMain";
+            ((System.ComponentModel.ISupportInitialize)nudQuality).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -116,5 +130,6 @@
         private System.Windows.Forms.ProgressBar pbFiles;
         private System.Windows.Forms.TextBox tbExtensions;
         private System.Windows.Forms.CheckBox cbInOldFolder;
+        private System.Windows.Forms.NumericUpDown nudQuality;
     }
 }
