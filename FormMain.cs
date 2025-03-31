@@ -87,7 +87,14 @@ namespace FileCompress
                     case ".gif":
                         {
                             PngCompressionService pngCompressionService = new PngCompressionService();
-                            pngCompressionService.ResizeAndCompressImage(inputPdfPath, outputPdfPath, (int)this.nudQuality.Value, 1920, 1080);
+                            int maxWidth = 1920;
+                            int maxHeight = 1080;
+                            if (!this.cbResize.Checked)
+                            {
+                                maxWidth = 0;
+                                maxHeight = 0;
+                            }
+                            pngCompressionService.ResizeAndCompressImage(inputPdfPath, outputPdfPath, (int)this.nudQuality.Value, maxWidth, maxHeight);
                         }
                         break;
                     default:

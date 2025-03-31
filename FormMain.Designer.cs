@@ -35,6 +35,7 @@
             tbExtensions = new System.Windows.Forms.TextBox();
             cbInOldFolder = new System.Windows.Forms.CheckBox();
             nudQuality = new System.Windows.Forms.NumericUpDown();
+            cbResize = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)nudQuality).BeginInit();
             SuspendLayout();
             // 
@@ -101,11 +102,22 @@
             nudQuality.TabIndex = 10;
             nudQuality.Value = new decimal(new int[] { 90, 0, 0, 0 });
             // 
+            // cbResize
+            // 
+            cbResize.AutoSize = true;
+            cbResize.Location = new System.Drawing.Point(214, 76);
+            cbResize.Name = "cbResize";
+            cbResize.Size = new System.Drawing.Size(119, 24);
+            cbResize.TabIndex = 11;
+            cbResize.Text = "Resize image";
+            cbResize.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(543, 129);
+            Controls.Add(cbResize);
             Controls.Add(nudQuality);
             Controls.Add(cbInOldFolder);
             Controls.Add(tbExtensions);
@@ -131,5 +143,6 @@
         private System.Windows.Forms.TextBox tbExtensions;
         private System.Windows.Forms.CheckBox cbInOldFolder;
         private System.Windows.Forms.NumericUpDown nudQuality;
+        private System.Windows.Forms.CheckBox cbResize;
     }
 }

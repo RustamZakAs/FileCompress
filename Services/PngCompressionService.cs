@@ -39,7 +39,7 @@ namespace FileCompress.Services
             {
                 format = image.Metadata.DecodedImageFormat;
                 // Определяем, нужно ли уменьшать размер
-                if (image.Width > maxWidth || image.Height > maxHeight)
+                if ((maxWidth != 0 && maxWidth != -1 && maxHeight != 0 && maxHeight != -1) && (image.Width > maxWidth || image.Height > maxHeight))
                 {
                     float scale = Math.Min((float)maxWidth / image.Width, (float)maxHeight / image.Height);
                     int newWidth = (int)(image.Width * scale);
